@@ -26,13 +26,14 @@ executable advent-of-code
 
     -- Modules included in this executable, other than Main.
     other-modules:
-        Day5
-        , Day6
+        Day5,
+        Day6,
+        Day8
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:
-        base ^>=4.16.3.0
-        , split
+        base ^>=4.16.4.0,
+        split
     hs-source-dirs:   app
     default-language: Haskell2010
