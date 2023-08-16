@@ -19,6 +19,7 @@ solutions =
   , Day4.solve
   , Day5.solve
   , Day6.solve
+  , const $ pure ()
   , Day8.solve
   , Day9.solve
   , Day10.solve
