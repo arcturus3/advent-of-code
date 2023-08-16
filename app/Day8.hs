@@ -40,8 +40,8 @@ dist heightmap =
     distTop = transpose . map distRow . transpose $ heightmap
     distBottom = transpose . reverse' . map distRow . reverse' . transpose $ heightmap
 
-solve :: IO ()
-solve = do
-  heightmap <- map (map digitToInt) . lines <$> getContents
+solve :: String -> IO ()
+solve input = do
+  let heightmap = map (map digitToInt) . lines $ input
   print $ sum . map (length . filter id) . visible $ heightmap
   print $ maximum . map maximum . dist $ heightmap

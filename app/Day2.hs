@@ -74,8 +74,7 @@ parse2 =
     )
   . lines
 
-solve :: IO ()
-solve = do
-  input <- getContents
+solve :: String -> IO ()
+solve input = do
   print $ solve1 $ parse1 input
   print $ solve2 $ parse2 input

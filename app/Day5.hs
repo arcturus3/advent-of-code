@@ -21,9 +21,9 @@ applyInstruction order stacks [num, src, dst] =
       | i == dst = order movedCrates ++ stack
       | otherwise = stack
 
-solve :: IO ()
-solve = do
-  input <- parseInput <$> getContents
+solve :: String -> IO ()
+solve contents = do
+  let input = parseInput contents
   let result1 = uncurry (foldl $ applyInstruction reverse) input
   let result2 = uncurry (foldl $ applyInstruction id) input
   print $ map head . filter (not . null) $ result1

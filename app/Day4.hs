@@ -29,8 +29,7 @@ check2 :: ((Int, Int), (Int, Int)) -> Bool
 check2 (r1, r2) =
   not (snd r1 < fst r2 || snd r2 < fst r1)
 
-solve :: IO ()
-solve = do
-  input <- getContents
+solve :: String -> IO ()
+solve input = do
   print $ length $ filter (check1 . parse) $ lines input
   print $ length $ filter (check2 . parse) $ lines input

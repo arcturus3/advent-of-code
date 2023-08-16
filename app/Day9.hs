@@ -35,9 +35,9 @@ run moves length =
     ropes = scanl moveRope rope deltas
     positions = map last ropes
 
-solve :: IO ()
-solve = do
+solve :: String -> IO ()
+solve contents = do
   let parseLine line = let [move, times] = words line in (head move, read times :: Int)
-  input <- map parseLine . lines <$> getContents
+  let input = map parseLine . lines $ contents
   print $ run input 2
   print $ run input 10

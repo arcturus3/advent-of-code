@@ -10,8 +10,7 @@ findMarker markerLength signal =
     distinct list = length list == length (nub list)
     markers = map (\i -> distinct $ take markerLength $ drop i signal) [0..]
 
-solve :: IO ()
-solve = do
-  input <- getContents
+solve :: String -> IO ()
+solve input = do
   print $ findMarker 4 input
   print $ findMarker 14 input

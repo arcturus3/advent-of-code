@@ -11,9 +11,9 @@ deltas =
       then [0]
       else [0, read $ words op !! 1]
 
-solve :: IO ()
-solve = do
-  ops <- lines <$> getContents'
+solve :: String -> IO ()
+solve input = do
+  let ops = lines input
   let values = scanl (+) 1 (deltas ops)
   print $ sum $ map (\i -> i * values !! (i - 1)) [20, 60, 100, 140, 180, 220]
 

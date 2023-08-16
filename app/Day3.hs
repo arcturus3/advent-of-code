@@ -38,8 +38,7 @@ groups list =
     [] -> []
     x:y:z:rest -> (x, y, z) : groups rest
 
-solve :: IO ()
-solve = do
-  input <- getContents
+solve :: String -> IO ()
+solve input = do
   print $ solve1 $ lines input
   print $ solve2 $ groups $ lines input
