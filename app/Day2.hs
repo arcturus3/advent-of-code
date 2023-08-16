@@ -1,4 +1,4 @@
-module Main (main) where
+module Day2 (solve) where
 
 import Data.List
 import Data.Maybe
@@ -12,6 +12,9 @@ symbolToMove :: Char -> Move
 symbolToMove 'A' = Rock
 symbolToMove 'B' = Paper
 symbolToMove 'C' = Scissors
+symbolToMove 'X' = Rock
+symbolToMove 'Y' = Paper
+symbolToMove 'Z' = Scissors
 
 symbolToOutcome :: Char -> Outcome
 symbolToOutcome 'X' = Loss
@@ -40,16 +43,29 @@ choose move outcome =
   where
     fstBeatsSnd = [(Rock, Scissors), (Scissors, Paper), (Paper, Rock)]
 
-solve :: [(Move, Outcome)] -> Int
-solve =
+solve1 :: [(Move, Move)] -> Int
+solve1 = sum . map (\(x, y) -> value y + score y x)
+
+solve2 :: [(Move, Outcome)] -> Int
+solve2 =
   sum . map
     (\(opponent, outcome) ->
       let player = choose opponent outcome
       in value player + score player opponent
     )
 
-parse :: String -> [(Move, Outcome)]
-parse =
+parse1 :: String -> [(Move, Move)]
+parse1 =
+  map
+    (\line ->
+      let [x, y] = words line
+      in
+        (symbolToMove $ head x, symbolToMove $ head y)
+    )
+  . lines
+
+parse2 :: String -> [(Move, Outcome)]
+parse2 =
   map
     (\line ->
       let [x, y] = words line
@@ -58,7 +74,8 @@ parse =
     )
   . lines
 
-main :: IO ()
-main = do
+solve :: IO ()
+solve = do
   input <- getContents
-  print $ solve $ parse input
+  print $ solve1 $ parse1 input
+  print $ solve2 $ parse2 input

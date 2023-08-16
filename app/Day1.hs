@@ -1,11 +1,12 @@
-module Main (main) where
+module Day1 (solve) where
 
 import Data.List (sort)
 
-main :: IO ()
-main = do
+solve :: IO ()
+solve = do
     input <- getContents >>= (\contents -> putStrLn "" >> return contents)
     let calories = (map . map) (read :: String -> Int) (groupLines $ lines input)
+    print $ solve1 calories
     print $ solve2 calories
 
 groupLines :: [String] -> [[String]]

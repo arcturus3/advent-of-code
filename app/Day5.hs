@@ -1,4 +1,4 @@
-module Day5 (day5a, day5b) where
+module Day5 (solve) where
 
 import Data.Char
 import Data.List
@@ -21,14 +21,10 @@ applyInstruction order stacks [num, src, dst] =
       | i == dst = order movedCrates ++ stack
       | otherwise = stack
 
-day5a :: IO ()
-day5a = do
+solve :: IO ()
+solve = do
   input <- parseInput <$> getContents
-  let result = uncurry (foldl $ applyInstruction reverse) input
-  print $ map head . filter (not . null) $ result
-
-day5b :: IO ()
-day5b = do
-  input <- parseInput <$> getContents
-  let result = uncurry (foldl $ applyInstruction id) input
-  print $ map head . filter (not . null) $ result
+  let result1 = uncurry (foldl $ applyInstruction reverse) input
+  let result2 = uncurry (foldl $ applyInstruction id) input
+  print $ map head . filter (not . null) $ result1
+  print $ map head . filter (not . null) $ result2

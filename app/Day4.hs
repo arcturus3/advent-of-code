@@ -1,3 +1,5 @@
+module Day4 (solve) where
+
 import Data.List
 
 split :: Char -> String -> (String, String)
@@ -18,13 +20,17 @@ parse s =
     , (read left2 :: Int, read right2 :: Int)
     )
 
-check :: ((Int, Int), (Int, Int)) -> Bool
-check (r1, r2) =
+check1 :: ((Int, Int), (Int, Int)) -> Bool
+check1 (r1, r2) =
   fst r1 <= fst r2 && snd r2 <= snd r1
   || fst r2 <= fst r1 && snd r1 <= snd r2
 
-main :: IO ()
-main = do
+check2 :: ((Int, Int), (Int, Int)) -> Bool
+check2 (r1, r2) =
+  not (snd r1 < fst r2 || snd r2 < fst r1)
+
+solve :: IO ()
+solve = do
   input <- getContents
-  let result = length $ filter (check . parse) $ lines input
-  print result
+  print $ length $ filter (check1 . parse) $ lines input
+  print $ length $ filter (check2 . parse) $ lines input

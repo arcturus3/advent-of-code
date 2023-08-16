@@ -1,4 +1,4 @@
-module Day9 () where
+module Day9 (solve) where
 
 import Data.Ord (clamp)
 import Data.Char (digitToInt)
@@ -26,8 +26,8 @@ moveRope rope (dx, dy) =
     (hx, hy) = head rope
     (hx', hy') = (hx + dx, hy + dy)
 
-solve :: [(Char, Int)] -> Int -> Int
-solve moves length =
+run :: [(Char, Int)] -> Int -> Int
+run moves length =
   size . fromList $ positions
   where
     deltas = map delta . concatMap (uncurry $ flip replicate) $ moves
@@ -35,9 +35,9 @@ solve moves length =
     ropes = scanl moveRope rope deltas
     positions = map last ropes
 
-main :: IO ()
-main = do
+solve :: IO ()
+solve = do
   let parseLine line = let [move, times] = words line in (head move, read times :: Int)
   input <- map parseLine . lines <$> getContents
-  print $ solve input 2
-  print $ solve input 10
+  print $ run input 2
+  print $ run input 10

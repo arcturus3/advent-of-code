@@ -1,4 +1,4 @@
-module Day8 () where
+module Day8 (solve) where
 
 import Data.List
 import Data.Char (digitToInt)
@@ -40,8 +40,8 @@ dist heightmap =
     distTop = transpose . map distRow . transpose $ heightmap
     distBottom = transpose . reverse' . map distRow . reverse' . transpose $ heightmap
 
-main :: IO ()
-main = do
+solve :: IO ()
+solve = do
   heightmap <- map (map digitToInt) . lines <$> getContents
   print $ sum . map (length . filter id) . visible $ heightmap
   print $ maximum . map maximum . dist $ heightmap

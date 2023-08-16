@@ -26,6 +26,10 @@ executable advent-of-code
 
     -- Modules included in this executable, other than Main.
     other-modules:
+        Day1,
+        Day2,
+        Day3,
+        Day4,
         Day5,
         Day6,
         Day8,
