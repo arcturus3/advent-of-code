@@ -7,6 +7,7 @@ import qualified Day3 (solve)
 import qualified Day4 (solve)
 import qualified Day5 (solve)
 import qualified Day6 (solve)
+import qualified Day7 (solve)
 import qualified Day8 (solve)
 import qualified Day9 (solve)
 import qualified Day10 (solve)
@@ -19,7 +20,7 @@ solutions =
   , Day4.solve
   , Day5.solve
   , Day6.solve
-  , const $ pure ()
+  , Day7.solve
   , Day8.solve
   , Day9.solve
   , Day10.solve
