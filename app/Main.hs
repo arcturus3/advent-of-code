@@ -13,6 +13,7 @@ import qualified Day9 (solve)
 import qualified Day10 (solve)
 import qualified Day11 (solve)
 import qualified Day12 (solve)
+import qualified Day13 (solve)
 
 solutions :: [String -> IO ()]
 solutions =
@@ -28,6 +29,7 @@ solutions =
   , Day10.solve
   , Day11.solve
   , Day12.solve
+  , Day13.solve
   ]
 
 main :: IO ()

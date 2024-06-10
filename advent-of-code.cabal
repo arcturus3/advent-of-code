@@ -32,12 +32,13 @@ executable advent-of-code
         Day9,
         Day10,
         Day11,
-        Day12
+        Day12,
+        Day13
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:
-        base ^>=4.16.4.0,
+        base,
         split,
         containers,
         megaparsec,
